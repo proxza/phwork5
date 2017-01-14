@@ -1,0 +1,84 @@
+/* Главные стили */
+body {
+    font-family: Tahoma;
+    font-size: 12px;
+    background: #ededed;
+    color: #000000;
+}
+
+#container {
+    background: #ffffff;
+    margin: 5px auto;
+    width: 1200px;
+    height: 1000px;
+    border: 1px solid;
+    border-radius: 2px;
+}
+
+#header {
+    background: #6bc6ed;
+    width: 1200px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+}
+
+#navigation {
+    background: #0266b3;
+    width: 1200px;
+    height: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 20px;
+}
+
+#content {
+    background: #6bc6ed;
+    width: 990px;
+    height: 770px;
+    float: left;
+    padding: 5px 5px;
+}
+
+#reg-content {
+    background: #6bc6ed;
+    width: 1190px;
+    height: 770px;
+    text-align: center;
+    color: white;
+    padding: 5px 5px;
+}
+
+#right-menu {
+    background: #0266b3;
+    width: 200px;
+    height: 730px;
+    float: right;
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 0px;
+
+}
+
+#clear {
+    clear: both;
+}
+
+#footer {
+    background: #0266b3;
+    width: 1200px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: #ffffff;
+}
+
+/* Пользовательские блоки */
+
+#auth {
+    padding: 0px 10px;
+}
+
+a {
+    color: white;
+}
