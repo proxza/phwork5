@@ -28,25 +28,14 @@ if (isset($_GET['exit'])) {
     unset($_SESSION['login']);
     unset($_SESSION['password']);
     unset($_SESSION['host']);
+    unset($_SESSION['user']);
     setcookie("lastUrl");
     session_destroy();
     $formEnable = 0;
 }
 
-/**
- * @param $fileName
- * @return array
- */
-function readMe ($fileName) {
-    $data = array();
-    $file = fopen($fileName, "r");
-
-    while (!feof($file)) {
-        $line = fgets($file, 9999);
-        $data[] = $line;
-    }
-
-    return $data;
+if (isset($_SESSION['user'])) {
+    $formEnable = 1;
 }
 
 ?>

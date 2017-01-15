@@ -8,8 +8,9 @@ $dt = date("d.m.y G:i");
 CONST FILE_NAME = "db.txt"; // Название БД
 $news = unserialize(file_get_contents(FILE_NAME));
 
-// Подключаем файлик с авторизацией что бы не писать везде одно и тоже 5 раз
+// Подключаем файлик с авторизацией
 require_once "auth.php";
+require_once "vk-auth.php";
 
 if (isset($_POST['saveNews'])) {
 
@@ -41,7 +42,6 @@ if (isset($_POST['saveNews'])) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,6 +66,10 @@ if (isset($_POST['saveNews'])) {
 
         // Если авторизация успешна - выводим форму добавления новостей
         if ($formEnable != 0) {
+
+            if (!isset($_SESSION['login'])) {
+                $_SESSION['login'] = $_SESSION['user']['last_name'] . " " . $_SESSION['user']['first_name'];
+            }
 
             ?>
 
@@ -116,6 +120,9 @@ if (isset($_POST['saveNews'])) {
         // Если авторизация не пройдена, выводим форму
         if ($formEnable == 0) {
 
+            // Ссылка для oAuth через ВК
+            echo $link = '<p><a href="' . $url . '?' . urldecode(http_build_query($params)) . '">Вход через ВКонтакте</a></p>';
+
             ?>
             <div id="auth">
                 <b>Форма авторизации</b>
@@ -141,6 +148,14 @@ if (isset($_POST['saveNews'])) {
             </div>
 
             <?php
+
+        } elseif (isset($_SESSION['user'])) {
+
+            echo "<div>";
+            echo "Вы авторизованы как <a href='https://vk.com/id" . $_SESSION['user']['uid'] . "' target='_blank'><strong>" . $_SESSION['user']['last_name'] . " " . $_SESSION['user']['first_name'] . "</strong></a><br /><br />";
+            echo "<a href='addnews.php'>Добавить новость</a> <br />";
+            echo "<a href='index.php?exit'>Выйти</a>";
+            echo "</div>";
 
         } else {
 
